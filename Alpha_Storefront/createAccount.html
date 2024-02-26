@@ -56,40 +56,6 @@
                     </div>
                 </form>
 </section>
-<script>
-function submitForm() {
-    // Get values from the form
-    const email = document.getElementById('email').value;
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const age = document.getElementById('age').value;
-    const address = document.getElementById('address').value;
-
-    // Validate required fields
-    if (!email || !name || !age || !address) {
-        alert('Please fill out all required fields.');
-        return;
-    }
-
-    // Create a customer object with the collected information
-    const customer = {
-        email: email,
-        name: name,
-        phone: phone,
-        age: age,
-        address: address
-    };
-
-    // You can do something with the customer object, such as sending it to a server or processing it further
-    console.log('Customer Information:', customer);
-
-    // Reset the form after submission
-    document.getElementById('createForm').reset();
-}
-    
-    
-       
-</script>
         <!-- Footer-->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

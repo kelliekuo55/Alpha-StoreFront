@@ -25,5 +25,5 @@ function submitForm() {
     console.log('Customer Information:', customer);
 
     // Reset the form after submission
-    document.getElementById('createForm').reset();
+    //document.getElementById('createForm').reset();
 }
