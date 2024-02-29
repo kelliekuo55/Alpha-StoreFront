@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Project Alpha Store Login</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">This is Team 4 Shop</h1>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="login-section">
+            <h1>Product</h1>
+                <form id="createForm" onsubmit="">
+                    <div class="form-group">
+                        <label for="productId">Product ID:</label>
+                        <input type="text" name="productId" id="productId" required>
+                        
+                        <label for="productDesc">Product Description:</label>
+                        <input type="text" name="productDesc" id="productDesc" required>
+                        
+                        <label for="productCat">Product Categroy:</label>
+                        <select id="productCat" name="productCat" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="Football">Football</option>
+                            <option value="Baseball">Baseball</option>
+                            <option value="Basketball">Basketball</option>
+                        </select>
+                        <label for="productUnit">Product Unit:</label>
+                        <select id="productUnit" name="productUnit" required>
+                            <option value="" disabled selected>Select a Unit of Measure</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="productPrice">Product Price:</label>
+                        <input type="text" name="productPrice" id="productPrice" required>
+                        <label for="productPrice">Product Weight:</label>
+                        <input type="number" name="productPrice" id="productPrice" required>
+                    </div>
+                </form>
+</section>
+        <!-- Footer-->
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
