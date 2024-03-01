@@ -1,18 +1,28 @@
-function submitForm() {
-    // Get values from the form
-    var email = document.getElementById('email').value;
-    var name = document.getElementById('name').value;
-    var phone = document.getElementById('phone').value;
-    var age = document.getElementById('age').value;
-    var address = document.getElementById('address').value;
+// Add event listeners for the "Sign up" button
+var signupButton = document.getElementById("signup-button");
+signupButton.addEventListener("click", handleLogin);
 
+// Function to handle the "create" button click
+function handleLogin() {
+    event.preventDefault();
+    submitForm();
+}
+
+// Function to update JSON object display
+function submitForm() {
+    var email = document.getElementById("email").value.trim();
+    var name = document.getElementById("name").value.trim();
+    var phone = document.getElementById("phone").value.trim();
+    var age = document.getElementById("age").value.trim();
+    var address = document.getElementById("address").value.trim();
+    
     // Validate required fields
     if (!email || !name || !age || !address) {
         alert('Please fill out all required fields.');
         return;
     }
 
-    // Create a customer object with the collected information
+     // Create a customer object with the collected information
     var customer = {
         email: email,
         name: name,
@@ -21,9 +31,5 @@ function submitForm() {
         address: address
     };
 
-    // You can do something with the customer object, such as sending it to a server or processing it further
     console.log('Customer Information:', customer);
-
-    // Reset the form after submission
-    //document.getElementById('createForm').reset();
 }
