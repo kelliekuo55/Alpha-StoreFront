@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Update</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h2>Product Update</h2>
+
+<!-- search form -->
+<label for="searchInput">Search Product by ID:</label>
+<input type="text" id="searchInput">
+<button id="searchBtn">Search</button>
+
+<!-- update form -->
+<div id="updateForm" style="display:none;">
+  <h3>Update Product</h3>
+  <label for="productDesc">Product Description:</label>
+  <input type="text" id="productDesc"><br>
+  <label for="productCat">Product Category:</label>
+  <input type="text" id="productCat"><br>
+  <label for="productUnit">Product Unit:</label>
+  <input type="text" id="productUnit"><br>
+  <label for="productPrice">Product Price:</label>
+  <input type="text" id="productPrice"><br>
+  <label for="productWeight">Product Weight:</label>
+  <input type="text" id="productWeight"><br>
+  <button id="updateBtn">Update</button>
+</div>
+
+<!-- search result -->
+<div id="searchResult"></div>
+
+<script>
+	$(document).ready(function(){
+  // handles search button click
+  $("#searchBtn").click(function(){
+    var searchID = $("#searchInput").val();
+    //uses ajax to search for product by ID
+    $.ajax({
+      url: example.php, 
+      method: "POST",
+      data: {productID: searchID},
+      dataType: "json", 
+      success: function(response){
+        //displays search result
+        $("#searchResult").html("Product ID: " + response.productID + "<br>" +
+                                "Product Description: " + response.productDesc + "<br>" +
+                                "Product Category: " + response.productCat + "<br>" +
+                                "Product Unit: " + response.productUnit + "<br>" +
+                                "Product Price: " + response.productPrice + "<br>" +
+                                "Product Weight: " + response.productWeight);
+		  //presents update form for searched product
+        $("#updateForm").show();
+      }
+    });
+  });
+
+  //handles update button click
+  $("#updateBtn").click(function(){
+    var productDesc = $("#productDesc").val();
+    var productCat = $("#productCat").val();
+    var productUnit = $("#productUnit").val();
+    var productPrice = $("#productPrice").val();
+    var productWeight = $("#productWeight").val();
+    //uses ajax to update product details
+    $.ajax({
+      url: example.php, 
+      method: "POST",
+      data: {
+        productDesc: productDesc,
+        productCat: productCat,
+        productUnit: productUnit,
+        productPrice: productPrice,
+        productWeight: productWeight
+      },
+      success: function(response){
+        alert("Product successfully updated.");
+        $("#updateForm").hide();
+        $("#searchResult").empty();
+        $("#searchInput").val("");
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
