@@ -66,5 +66,29 @@
         <button type="button" class="login-button" id="addressButton">Submit</button>
     </form>
 </div>
+    <script>
+    document.getElementById("addressButton").addEventListener("click", function() {
+        // Get form values
+        const address = document.getElementById("shippingAddress").value;
+        const city = document.getElementById("ShippingCity").value;
+        const state = document.getElementById("shippingState").value;
+        const zip = document.getElementById("shippingZip").value;
+        const carrier = document.getElementById("shippingCarrier").value;
+        const shippingMethod = document.getElementById("shippingMethod").value;
+
+        // Construct JSON object
+        const productDocument = {
+            "address": address,
+            "city": city,
+            "state": state,
+            "zip": zip,
+            "carrier": carrier,
+            "shippingMethod": shippingMethod
+        };
+
+        // Output JSON object
+        console.log(productDocument);
+    });
+</script>
 </body>
 </html>
