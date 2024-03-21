@@ -1,3 +1,20 @@
+function displayCart() {
+        var product = JSON.parse(localStorage.getItem('product')) || [];
+        var cartTable = document.querySelector(".table");
+        var tableBody = cartTable.getElementsByTagName("tbody")[0];
+        tableBody.innerHTML = "";
+
+        product.forEach(function(item) {
+            var row = tableBody.insertRow();
+            
+            row.insertCell(0).innerHTML = item.productId;
+            row.insertCell(1).innerHTML = item.productDesc;
+            row.insertCell(2).innerHTML = item.productCat;
+            row.insertCell(3).innerHTML = item.productUnit;
+            row.insertCell(4).innerHTML = item.productPrice;
+            row.insertCell(5).innerHTML = item.productWeight;
+        });
+    }
 $(document).ready(function() {
 
 //Global product array to store the JSON objects
@@ -53,6 +70,7 @@ function addForm() {
     
     
     event.preventDefault(); // Prevent the default form submission
+    localStorage.setItem('product', JSON.stringify(product));
     
 }
 
