@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Cart</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    var shoppingCart = [];
+
+    // adds product to cart
+    function addToCart(productId, productDesc, productPrice) {
+        var existingItem = shoppingCart.find(item => item.productId === productId);
+        if (existingItem) {
+            existingItem.quantity++;
+            existingItem.totalPrice += parseFloat(productPrice);
+        } else {
+            shoppingCart.push({
+                productId: productId,
+                productDesc: productDesc,
+                quantity: 1,
+                totalPrice: parseFloat(productPrice)
+            });
+        }
+        updateCartDisplay();
+    }
+
+    // removes item from cart
+    function removeFromCart(productId) {
+        var index = shoppingCart.findIndex(item => item.productId === productId);
+        if (index !== -1) {
+            var removedItem = shoppingCart.splice(index, 1)[0];
+            updateCartDisplay();
+        }
+    }
+
+    // updates cart
+    function updateCartDisplay() {
+        $('#cart').empty();
+        var total = 0;
+        shoppingCart.forEach(function(item) {
+            var $removeBtn = $('<button>').text('Remove').click(function() {
+                removeFromCart(item.productId);
+            });
+            $('#cart').append('<li>' + item.productDesc + ' - $' + item.totalPrice.toFixed(2) + ' (' + item.quantity + ') </li>').append($removeBtn);
+            total += item.totalPrice;
+        });
+        $('#total').text('Total: $' + total.toFixed(2));
+    }
+
+    // button to add to cart
+    $('#searchBtn').click(function() {
+        var productId = $('#productId').val();
+        var productDesc = $('#productDesc').val();
+        var productPrice = $('#productPrice').val();
+
+        addToCart(productId, productDesc, productPrice);
+    });
+});
+</script>
+</head>
+<body>
+<h2>Product Search and Add to Cart</h2>
+<label for="productId">Product ID:</label>
+<input type="text" id="productId">
+<br>
+<label for="productDesc">Product Description:</label>
+<input type="text" id="productDesc">
+<br>
+<label for="productPrice">Product Price:</label>
+<input type="text" id="productPrice">
+<br>
+<button id="searchBtn">Add to Cart</button>
+<hr>
+<h2>Your Cart</h2>
+<ul id="cart"></ul>
+<div id="total">Total: $0.00</div>
+</body>
+</html>
