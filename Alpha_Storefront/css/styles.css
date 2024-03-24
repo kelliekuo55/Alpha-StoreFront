@@ -83,5 +83,23 @@ body {
 }
 
 .login-button:hover {
-  opacity: 0.8; /* Add a slight hover effect */
+  opacity: 0.8; 
 }
+
+.site-footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px; 
+}
+
+.site-footer .container {
+    width: 80%;
+    margin: 0 auto; 
+}
+
+.site-footer p {
+    margin: 0;
+}
+
