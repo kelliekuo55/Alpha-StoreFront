@@ -127,6 +127,19 @@ app.controller('ShippingController', function($scope, mockService) {
             });
     };
 });
+        
+$.ajax({
+    url: 'https://example.com/api/customers', // Placeholder URL
+    type: 'POST', // Assuming the endpoint accepts POST requests for signing up new customers
+    contentType: 'application/json', // Content type
+    data: JSON.stringify(customer), // Send the customer information
+    success: function(response) {
+        console.log('Server response:', response);
+    },
+    error: function(xhr, status, error) {
+        console.error('Error:', status, error);
+    }
+});
 </script>
 <footer class="site-footer">
     <div class="container">
