@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app = "shippingApp" lang="en">
+<html ng-app="billingApp" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Shipping Selection Page</title>
@@ -34,27 +34,27 @@
             </div>
         </header>
  <!-- Section-->
-<div class="container">
-    <form id="createForm" onsubmit="">
+<div class="container" ng-controller="BillingController">
+    <form ng-submit="submitForm($event)">
         <h1>Billing</h1>
         <div class="form-group" >
-            <label for ="customerName">Customer Name</label>
-            <input type="text" class="form-control" id="customerName" required/>
+            <label for="customerName">Customer Name</label>
+            <input type="text" class="form-control" ng-model="customerName" id="customerName" required/>
             
-            <label for ="cusomterAddress">Address</label>
-            <input type="text" class="form-control" id ="cusomterAddress" required/>
+            <label for="customerAddress">Address</label>
+            <input type="text" class="form-control" ng-model="customerAddress" id ="customerAddress" required/>
             
             <label for ="customerEmail">Email</label>
-            <input type="email" class="form-control" id ="customerEmail" required/>
+            <input type="email" class="form-control" ng-model="customerEmail" id ="customerEmail" required/>
             
             <label for ="creditCard">Credit Card</label>
-            <input type="number" class="form-control" id ="creditCard" required/>
+            <input type="number" class="form-control" ng-model="creditCard" id="creditCard" required/>
             
             <label for ="creditCVV">Credit Card CVV</label>
-            <input type="number" class="form-control" id ="creditCVV" required/>
+            <input type="number" class="form-control" ng-model="creditCVV" id ="creditCVV" required/>
         
             <label for ="creditExpirationDate">Credit Card Expiration</label>
-            <input type="text" class="form-control" id ="creditCVV" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required/>
+            <input type="text" class="form-control" ng-model="creditExpirationDate" id ="creditExpirationDate" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required/>
         </div>
         <button type="submit" class="login-button" id="billingButton">Submit Order</button>
     </form>
@@ -64,5 +64,32 @@
         <p>&copy; Game Day Gear, A Team 4 Shop. All rights reserved.</p>
     </div>
 </footer>
+<script>
+var app = angular.module('billingApp', []);
+app.controller('BillingController', function($scope, $http) {
+    $scope.submitForm = function(event) {
+        console.log('submitForm called');
+        event.preventDefault();
+
+        var billingData = {
+            customerName: $scope.customerName,
+            customerAddress: $scope.customerAddress, // Fix typo in binding
+            customerEmail: $scope.customerEmail,
+            creditCard: $scope.creditCard,
+            creditCVV: $scope.creditCVV,
+            creditExpirationDate: $scope.creditExpirationDate,
+        };
+
+        console.log(billingData); // Log the data to ensure it's captured
+
+        $http.post('http://localhost:3000/api/billing', billingData)
+            .then(function(response) {
+                console.log('Response:', response);
+            }, function(error) {
+                console.error('Error:', error);
+            });
+    };
+});
+</script>
 </body>
 </html>
