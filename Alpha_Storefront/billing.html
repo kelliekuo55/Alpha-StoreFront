@@ -73,7 +73,7 @@ app.controller('BillingController', function($scope, $http) {
 
         var billingData = {
             customerName: $scope.customerName,
-            customerAddress: $scope.customerAddress, // Fix typo in binding
+            customerAddress: $scope.customerAddress,
             customerEmail: $scope.customerEmail,
             creditCard: $scope.creditCard,
             creditCVV: $scope.creditCVV,
@@ -84,7 +84,20 @@ app.controller('BillingController', function($scope, $http) {
 
         $http.post('http://localhost:3000/api/billing', billingData)
             .then(function(response) {
-                console.log('Response:', response);
+              console.log("Order submitted successfully");
+              console.log("Order submitted successfully");
+              console.log("Credit CVV: " + billingData.creditCVV);
+              console.log("Credit Card: " + billingData.creditCard);
+              console.log("Credit Expiration Date: " + billingData.creditExpiration);
+              console.log("Customer Address: " + billingData.customerAddress);
+              console.log("Customer Email: " + billingData.customerEmail);
+              console.log("Customer Name: " + billingData.customerName);
+              console.log("Response Config: ", response.config);
+              console.log("Response Data: ", response.data);
+              console.log("Response Headers: ", response.headers);
+              console.log("Response Status: ", response.status);
+              console.log("Response Status Text: ", response.statusText);
+              console.log("Response XHR Status: ", response.xhrStatus);
             }, function(error) {
                 console.error('Error:', error);
             });
